@@ -27,3 +27,12 @@ const player={
 };
 console.log(player.name);
 player.sayHello(player.name);
+const hi = ["hello", "greeting"];
+console.log(hi);
+console.log(hi[1]);
+hi[1] = "What's up";
+console.log(hi);
+hi[2] = "how are you?";
+console.log(hi);
+hi[8] = "What's the story?"
+console.log(hi);
