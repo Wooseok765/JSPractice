@@ -1,28 +1,25 @@
+const age = parseInt(prompt("How old are u"));
+ // bring up a window able to write something
+ // then convert the return value into integer
 
-const calculator = {
-    plus: function (a, b) {
-        return a + b;
-    },
-    time: function (a, b) {
-        return a * b;
-    },
-    minus: function (a, b) {
-        return a - b;
-    },
-    divide: function (a, b) {
-        return a / b;
-    },
-    power: function (base, power) {
-        return base ** power;
-    },
-};
+console.log(typeof age);
+console.log(age);
 
-const result = calculator.power(6, 8);
-console.log(result);
-const age = 96;
-function calculatorKrAge(ageOfForigner) {
-    return ageOfForigner + 2;
+console.log(isNaN(age));
+
+if(isNaN(age) || age < 0){
+    console.log("Please write a real positive numner");
+}else if(age <= 19){
+    console.log("You shall not drink");
+}else if(age > 19 && age < 50){
+    console.log("You can drink");
+}else if(age === 101){ 
+    // Operator '==' will convert the second value's type same as the base number
+    // but operator '===' does not do that
+    // !=, !==
+    console.log("Wow!!");
+}
+else{
+    console.log("Stop drinking, if you want to live long");
 }
 
-const krAge = calculatorKrAge(age);
-console.log(krAge);
