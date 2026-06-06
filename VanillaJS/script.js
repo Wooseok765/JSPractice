@@ -1,38 +1,28 @@
-/*
-function sayHello(a){
-    console.log("Hello! ", a);
-}
 
-sayHello("Wooseok");
-sayHello("Nicco");
-
-function plus(a=0, b=0){
-    console.log(a + b);
-}
-
-plus(18, 79);
-plus();
-
-function divide(a=0, b=1){
-    console.log(a / b);
-}
-divide(9, 5)
-*/
-
-const player={
-    name: "Wooseok",
-    sayHello: function(a){
-        console.log("hello!", a);
+const calculator = {
+    plus: function (a, b) {
+        return a + b;
+    },
+    time: function (a, b) {
+        return a * b;
+    },
+    minus: function (a, b) {
+        return a - b;
+    },
+    divide: function (a, b) {
+        return a / b;
+    },
+    power: function (base, power) {
+        return base ** power;
     },
 };
-console.log(player.name);
-player.sayHello(player.name);
-const hi = ["hello", "greeting"];
-console.log(hi);
-console.log(hi[1]);
-hi[1] = "What's up";
-console.log(hi);
-hi[2] = "how are you?";
-console.log(hi);
-hi[8] = "What's the story?"
-console.log(hi);
+
+const result = calculator.power(6, 8);
+console.log(result);
+const age = 96;
+function calculatorKrAge(ageOfForigner) {
+    return ageOfForigner + 2;
+}
+
+const krAge = calculatorKrAge(age);
+console.log(krAge);
