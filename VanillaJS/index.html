@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="style.css">
     <title>Momentum App</title>
 </head>
-
+ 
 <body>
-    <div class="hello">
-        <h1 class="originName">Grab me</h1>
-    </div>
-    <h1 class="hello" id="title">Grab you</h1>
-    <h2 class="hello" id="title">Grab me</h2>
-    <h2 class="hello" id="title">Grab me</h2>
-    <h2 class="hello" id="title">Grab me</h2>
+    <form id="login-form">
+        <input required maxlength="20" type="text" placeholder="What is your name?" />
+        <button>Log In</button>
+    </form>
+ <!--required같은 기능을 사용하기 위해선 바로 위 부모가 form이어야 함
+    또한 required를 충족하지 못 할 경우 form의 submit을 정지시키지만 JS의 작동은 막지 못함
+    form은 input 내부의 버튼이나 submit 타입의 element를 클릭할 때 submit된다.
+    input이 form내부에 있으면 엔터도 식별하여 submit 됨-->   
     <script src="script.js"></script>
 </body>
 
