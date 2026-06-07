@@ -1,26 +1,49 @@
-const title2 = document.querySelector("div.hello:first-child h1");
+const h1 = document.querySelector("div.hello:first-child h1");
 
-function handleTitleClick(){
-    // console.log("Title was clicked");
-    title2.style.color = "yellow";
+function handleTitleClick() {
+    h1.style.color = "yellow";
 }
 
-title2.addEventListener("click", handleTitleClick);
-// Passing a target action and a function
-// The function should not has parenthesis
-// because that will be executed when title2 is clicked
-
-function mouseHovering(){
-    // console.log("Mouse is here!!");
-    title2.innerText = "Mouse is here!!";
+function mouseHovering() {
+    h1.innerText = "Mouse is here!!";
 }
 
-title2.addEventListener("mouseenter", mouseHovering)
-
-function mouseLeave(){
-    // console.log("Mouse is gone");
-    title2.innerText = "Mouse goen";
+function mouseLeave() {
+    h1.innerText = "Mouse goen";
 }
 
-title2.addEventListener("mouseleave", mouseLeave);
-// console.dir(title2); -> you can see every properties even available events
+function handleWindowResize() {
+    document.body.style.backgroundColor = "tomato";
+    // Call document when user resize the window
+    // then access body.style.backgroundcolor
+
+    /* Only body, head, title, etc that are important things can be accessed by document. form
+       other elements need querySelector() or getElementBy...() */
+}
+
+function handleWindowCopy() {
+    alert("You copied h1 in my website!!");
+}
+
+function handleWindowOffLine() {
+    alert("Wifi signal is cut out");
+}
+
+function handleWindowOnLine() {
+    alert("Internet is back!!");
+}
+
+
+h1.onclick = handleTitleClick;
+h1.onmouseenter = mouseHovering;
+h1.onmouseleave = mouseLeave;
+// Upside of event listener: can use a removeEventListener later
+
+window.addEventListener("resize", handleWindowResize);
+// window is an object
+
+// window.addEventListener("copy", handleWindowCopy);
+h1.addEventListener("copy", handleWindowCopy);
+
+window.addEventListener("offline", handleWindowOffLine);
+window.addEventListener("online", handleWindowOnLine);
