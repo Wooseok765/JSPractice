@@ -17,6 +17,8 @@ const chosenImage = images[Math.floor(Math.random()*quotes.length)];
 const backImage = document.createElement("img");
 backImage.src = `img/${chosenImage}`;
 // img element의 src를(그림을 가져올 주소) 설정하는것
+// img폴더 내의 ${chosenImage}라는 이름을 가진 jpeg형식의 파일에 접근하는 중
+// 그래서 어레이에 정확한 이름을 넣어야 했음
 
 document.body.appendChild(backImage);
 // body에 html 추가하는 기능
