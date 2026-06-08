@@ -47,5 +47,3 @@ const author = document.querySelector("#quote span:last-child");
 const todaysQuote = quotes[Math.floor(Math.random()*quotes.length)];
 quote.innerText = todaysQuote.quote;
 author.innerText = `-- ${todaysQuote.author}--`;
-// 0이상 1미만의 랜덤숫자와 array 내부 저장된 element 숫자를 곱하면 
-// 가장 높은 인덱스와(lemgth -1) 0사이의 숫자가 나옴
