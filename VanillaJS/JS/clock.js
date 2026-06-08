@@ -16,7 +16,7 @@ function getClock(){
     const milisec = String(date.getMilliseconds()).padStart(2, "0");
     // padStart(a, "b") String 타입에만 적용되며 해당 글자수가 a만큼이 아닐 시 앞자리를 b로 채움
     // padEnd(a, "b") 뒷자리에 채우는것
-    clock.innerText = `${hours}:${minutes}:${second}:${milisec}`
+    clock.innerText = `${hours}:${minutes}:${second}`
     
 }
 getClock()
