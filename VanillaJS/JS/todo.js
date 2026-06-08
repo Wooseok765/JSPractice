@@ -1,32 +1,48 @@
 const toDoForm = document.getElementById("todo-form");
-const toDoInput = toDoForm.querySelector("input"); // the value in the input is saved in toDoInput when user presses the enter because this element is wraped by the form
+const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-list");
+const savedTodos = localStorage.getItem("todos"); // 저장된 string을 가져오는것
 
-function deletTodo(event){ // with the event, this function can specify what and where the action(click) is
-    // console.log(event.composedPath()); // show the path that event comes from. So user can find the target of the action 
-    const targetToRemove = event.target.parentElement; // specify the element. In here, the target is parent element of the button which is 'li'
+let toDos = [];
+
+function saveToDos() { // 브라우저 로컬저장소에 toDos[]를 string 형태로 저장하는것
+    localStorage.setItem("todos", JSON.stringify(toDos)); // stringify() can convert any object into a string
+    // JSON object provides a function that converts values to or from JavaScriopt Object Notation form(JSON)
+    // in this part, toDos is saved in the localStorage of the browser as a string with the key "todos"
+    // That would be looked array but actually a string
+}
+
+function deletTodo(event) {
+    const targetToRemove = event.target.parentElement;
     targetToRemove.remove();
 }
 
-function paintToDo(newTodo){
-    const li = document.createElement("li"); // create an element that wasn't defined in html file. li is just a dot. You can put some text in here directly.
-    const span = document.createElement("span"); // To modifiy the text later, you need a span. You can seperate additional element by the span
-    span.innerText = newTodo; // put text in the text area inside of span
-    li.appendChild(span); // add the span into the li
+function paintToDo(newTodo2) {
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    span.innerText = newTodo2;
+    li.appendChild(span);
     const button = document.createElement("button");
     button.innerText = "❎";
     button.addEventListener("click", deletTodo);
-    toDoList.appendChild(li); // put the li element into the toDoList(input). The li wraps the span
+    toDoList.appendChild(li);
     li.appendChild(button);
-    // the result will be accumulated
 
 }
 
-function handleTodoSubmit(event){
+function handleTodoSubmit(event) {
     event.preventDefault();
     const newTodo = toDoInput.value;
     toDoInput.value = "";
+    toDos.push(newTodo);
     paintToDo(newTodo);
+    saveToDos();
 }
 
 toDoForm.addEventListener("submit", handleTodoSubmit);
+
+if (savedTodos) { // display the to do list if the data still exists in the localStorage after refreshing the screen
+    const parsedTodos = JSON.parse(savedTodos); // 브라우저에서 가져온 string을 array 형태로 풀어내는것
+    toDos = parsedTodos; // 새로고침하며 initialize된 toDos array에 localStorage에서 가져온 기존 정보들 덮어씌는 것. const로 선언 시 불가능(어레이 내용 바꾸는게 아니라 덮어씌우기 이기때문)
+    parsedTodos.forEach(paintToDo); // array에 있는 각 element 하나당 paintToDo를 실행시킴
+}
