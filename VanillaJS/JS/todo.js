@@ -9,7 +9,7 @@ function saveToDos() {
     localStorage.setItem("todos", JSON.stringify(toDos));
 }
 
-function deletTodo(event) {
+function deletTodo(event) { // 사실 event라고 공간 안만들어도 javascript가 자동으로 arguement를 집어넣지만 해당 정보를 function 내부에서 사용하기위해 placeholder를 작성함
     const targetToRemove = event.target.parentElement;
     targetToRemove.remove();
     toDos = toDos.filter((item) => item.id != parseInt(targetToRemove.id));
